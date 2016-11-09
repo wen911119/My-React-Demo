@@ -15,10 +15,12 @@ import routes from 'ROUTE'
  * 请自行查阅相关资料
  */
 if (__DEV__ && __WHY_DID_YOU_UPDATE__) {
+  // 解构赋值
   const { whyDidYouUpdate } = require('why-did-you-update')
   whyDidYouUpdate(React)
 }
 if (__DEV__) {
+  console.log(__DEV__, 99)
   console.info('[当前环境] 开发环境')
 }
 if (__PROD__) {

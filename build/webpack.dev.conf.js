@@ -1,8 +1,10 @@
-var webpack = require('webpack'),
-  config = require('./webpack.base.conf'),
-  HtmlWebpackPlugin = require('html-webpack-plugin'),
-  ExtractTextPlugin = require('extract-text-webpack-plugin'),
-  BrowserSyncPlugin = require('browser-sync-webpack-plugin'),
+//测试环境的webpack配置文件
+
+var webpack = require('webpack'), 
+  config = require('./webpack.base.conf'), //在webpack.base.conf的基础上做增加
+  HtmlWebpackPlugin = require('html-webpack-plugin'),  //可以根据一个模板生成首页index.php，
+  ExtractTextPlugin = require('extract-text-webpack-plugin'), //这个插件是把散落在各个模块内的require('./xxx.css')打包成一个文件，放到头部
+  BrowserSyncPlugin = require('browser-sync-webpack-plugin'),  //不同终端打开我们页面，只要做其中一个页面滚动下页面，这个滚动也会被同步到终端
   // SOURCE_MAP = true; // 大多数情况下用不到
   SOURCE_MAP = false;
 
@@ -45,12 +47,12 @@ config.plugins.push(
   }),
   new BrowserSyncPlugin({
     host: '127.0.0.1',
-    port: 9090,
+    port: 9090, 
     proxy: 'http://127.0.0.1:9000/',
     logConnections: false,
     notify: false
   }, {
-    reload: false
+    reload: false   
   })
 );
 
