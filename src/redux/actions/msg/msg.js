@@ -9,6 +9,17 @@ const DEL_MSG = 'DEL_MSG'
 
 // ================================
 // Action Creator
+// 下面是一个高阶函数
+/* var fetchMsg = function fetchMsg(queryBody) {
+  return function (dispatch) {
+    return msgService.fetch(queryBody).then(function (msgs) {
+      return dispatch({
+        type: FETCH_MSG,
+        payload: msgs
+      });
+    });
+  };
+}; */
 // ================================
 const fetchMsg = queryBody => dispatch =>
   msgService

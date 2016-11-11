@@ -1,10 +1,13 @@
+import App from 'COMPONENT/App'
+import Welcome from 'COMPONENT/Welcome'
+
 export default {
   path: '/',
 
-  component: require('COMPONENT/App').default,
+  component: App,
   
   indexRoute: {
-    component: require('COMPONENT/Welcome').default
+    component: Welcome
   },
   
   childRoutes: [
@@ -32,4 +35,5 @@ export default {
   ├ /todo
   |
   ├ /redirect
+  本质上，react-router是把你的层级解构转为了一个配置对象，比如上面就是
 */

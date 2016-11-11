@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { Router } from 'react-router'
 import store, { history } from 'STORE'
-import routes from 'ROUTE'
+import routes from 'ROUTE'  // 会默认加载routers目录下index.js
 
 /**
  * 下面这货用于检测不必要的重新渲染，详情请看其项目地址：
@@ -20,7 +20,7 @@ if (__DEV__ && __WHY_DID_YOU_UPDATE__) {
   whyDidYouUpdate(React)
 }
 if (__DEV__) {
-  console.log(__DEV__, 99)
+  console.log(routes, 99)
   console.info('[当前环境] 开发环境')
 }
 if (__PROD__) {
