@@ -57,6 +57,7 @@ module.exports = {
             HOC: path.join(src, 'utils/HoC'),
             MIXIN: path.join(src, 'utils/mixins'),
             VIEW: path.join(src, 'views')
+
         }
     },
     resolveLoader: {

@@ -16,7 +16,7 @@ config.devtool = SOURCE_MAP ? 'eval-source-map' : false;
 // add hot-reload related code to entry chunk
 config.entry.app = [
   'eventsource-polyfill',
-  'webpack-hot-middleware/client?reload=true',
+  'webpack-hot-middleware/client?reload=true',  //增加了app.js的内容
   'webpack/hot/only-dev-server',
   config.entry.app
 ];

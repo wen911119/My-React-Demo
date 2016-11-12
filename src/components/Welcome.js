@@ -8,6 +8,8 @@ import { Link } from 'react-router'
  * 实际上，ES6 的类经由 Babel 转码后
  * 其实还是返回一个类似的函数
  */
+
+// 函数式声明组件的方式 
 const Welcome = () => (
   <div className="jumbotron">
     <h1>欢迎使用 <br/> React Demo</h1>
