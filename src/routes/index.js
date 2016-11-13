@@ -6,13 +6,13 @@ export default {
 
   component: App,
   
-  indexRoute: {
+  indexRoute: {  // 这个也算是子组件，不过是默认加载的子组件
     component: Welcome
   },
   
   childRoutes: [
     // 路由按模块组织分离，避免单文件代码量过大
-    require('./msg').default,
+    require('./msg').default,  // 这些是需要特定路径匹配才加载的子组件
     require('./todo').default,
     
     // 强制“刷新”页面的 hack

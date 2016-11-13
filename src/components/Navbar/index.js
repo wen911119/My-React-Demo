@@ -5,7 +5,7 @@ import LoginForm from './LoginForm'
 import LogoutDropdown from './LogoutDropdown'
 
 /* 导航栏全局显示，控制着用户的登录注销 */
-
+// es7的装饰器
 @connect( // 功能同 UTIL/createContainer
   ({ userData }) => ({ userData }),
   require('ACTION/user').default
@@ -14,11 +14,12 @@ export default class Navbar extends Component {
   componentWillMount () {
     console.info('[Navbar] 初始化：检查用户是否已经登录')
     console.info('[TIPS] 由于有Redux Logger，故之后就不手动打印动作了')
+    console.log(this.props, 99) // 这个时候userData还是null
     this.props.checkLogin()
   }
 
   render () {
-    console.info(this.props)
+    console.info(this.props, 88) // 第一遍渲染时userData还是null，第二遍就是wen911119
     let {
       userData, login, logout, // 通过 connect 获取
       location: { pathname }   // 通过 App 传入
@@ -39,7 +40,7 @@ export default class Navbar extends Component {
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <Link to='/' className="navbar-brand">
+              <Link to='/' className="navbar-brand"> 
                 React Demo
               </Link>
             </div>
