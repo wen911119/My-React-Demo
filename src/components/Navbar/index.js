@@ -5,10 +5,20 @@ import LoginForm from './LoginForm'
 import LogoutDropdown from './LogoutDropdown'
 
 /* 导航栏全局显示，控制着用户的登录注销 */
+// http://www.jianshu.com/p/94c988cf11f3
+// connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])
+// mapStateToProps是一个函数，返回值表示的是需要merge进props的state。默认值为() => ({})，即什么都不传。
+// mapDispatchToProps可以是一个函数，返回值表示的是需要merge进props的actionCreators，比如下面这样的
+// (dispatch, props) => ({ // 通常会省略第二个参数
+// bindActionCreators({
+//    ResourceActions
+//  }, dispatch)
+// })
+// 更方便的是可以直接接受一个对象，此时connect函数内部会将其转变为函数，这个函数和上面那个例子是一模一样的。
 // es7的装饰器
 @connect( // 功能同 UTIL/createContainer
-  ({ userData }) => ({ userData }),
-  require('ACTION/user').default
+  ({ userData }) => ({ userData }), // 直接从全局store上取出userData 并把它传给组件的属性userData(把数据变为属性)
+  require('ACTION/user').default    //  把方法变为属性 
 )
 export default class Navbar extends Component {
   componentWillMount () {

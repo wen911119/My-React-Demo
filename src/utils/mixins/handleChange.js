@@ -13,7 +13,8 @@
  *   value={this.state.myInput} />     // value 值同步 state
  *
  * 例子2：使用::绑定（例子1的语法糖）
- * onClick={this::handleChange}
+ * 这是es7 的语法
+ * onClick={this::handleChange} 
  *
  * 例子3：在构造函数中声明（推荐，避免每次render都重复绑定）
  * constructor (props) {

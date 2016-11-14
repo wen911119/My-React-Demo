@@ -16,7 +16,8 @@ const App = ({ children, location }) => ( // children是自带属性，代表子
   
     <div className="container">
       {/* 相当于 Vue Demo 中的根 router-view */}
-      { children }  // 包括welcome,msg,todo 三个组件，其中welcome是默认就展示出来的
+      {/* 包括welcome,msg,todo 三个组件，其中welcome是默认就展示出来的 */} 
+      { children }  
     </div>
 
     { DevTools && <DevTools /> }

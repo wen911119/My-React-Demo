@@ -10,7 +10,7 @@ export default class LoginForm extends Component {
     this.state = { username: '' }
 
     this.handleChange = handleChange.bind(this) // mixin
-  }
+  } 
 
   handleSubmit () {
     let username = this.state.username

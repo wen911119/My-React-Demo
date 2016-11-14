@@ -8,7 +8,7 @@ export default class LogoutDropdown extends Component {
   logout () {
     // 退出登录后直接返回首页
     this.props.logout()
-    this.context.router.replace('/')
+    this.context.router.replace('/') // react-router 提供的，用于操作路由
   }
 
   render () {
