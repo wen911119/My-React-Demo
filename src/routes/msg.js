@@ -11,6 +11,8 @@ export default {
   path: 'msg',
 
   /* 布局基页 */
+  // https://segmentfault.com/a/1190000007141049
+  // react-router 按需加载
   getComponent (nextState, cb) {
     require.ensure([], (require) => {
       // 立即注入 Reducer
