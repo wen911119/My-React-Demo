@@ -16,7 +16,7 @@ export default function () {
           type="text"
           className="form-control"
           name="title"
-          placeholder="请输入标题..."
+          placeholder="请ww输入标题..."
           onChange={this.handleChange}
           value={this.state.title}/>
       </div>

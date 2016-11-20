@@ -24,7 +24,7 @@ export default class Todo extends Component {
                 onClick={() => this.delTodo(todo.id)}>
                 &otimes;
               </a>
-              <span className="label label-default pull-right">
+              <span className="label label-default pull-right" onClick={()=>alert('test')}>
                 { dateTimeFormatter(todo.createdAt) }
               </span>
             </li>
