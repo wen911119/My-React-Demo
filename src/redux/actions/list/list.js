@@ -3,7 +3,7 @@
  */
 
 const fetchList = ({ currentPage, rows }) => {
-    console.log(currentPage, rows)
+    console.log(currentPage, rows, 6)
     return {
         type: 'listTest',
         payload: {
