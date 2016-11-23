@@ -8,6 +8,7 @@ const connectComponent = createContainer(
     // 是一个函数
     // 返回另一个函数
     // 这另一个函数 是 actionCreator
+    // http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html
 
 )
 

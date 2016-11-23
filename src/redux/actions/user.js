@@ -15,7 +15,7 @@ const LOG_OUT = 'LOG_OUT'
 // 原来，
 // 在使用了redux-thunk之后（把它当作中间件用）Action Creator 就还可以返回一个 thunk 函数
 // redux-thunk 中间件会做过滤，如果Action Creator 返回的是一个正常的action 对象，就什么也不做。如果返回的是一个函数那么就对它处理
-//
+// https://zhuanlan.zhihu.com/p/21398212
 // ================================
 const loginDone = (userData) => ({
     type: LOG_IN,
