@@ -12,8 +12,6 @@ export default class MsgDetail extends Component {
      */
 
         // 关于react 的 context  ，http://www.tuicool.com/articles/m2muAbU
-
-
     static contextTypes = {
         router: PropTypes.object.isRequired
     }
