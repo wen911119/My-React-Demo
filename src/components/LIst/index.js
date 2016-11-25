@@ -8,6 +8,7 @@ export default class ListContainer extends Component {
     componentWillMount () {
 
         this.updateList()
+
     }
 
     updateList () {
