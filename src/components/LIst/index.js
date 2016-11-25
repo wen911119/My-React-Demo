@@ -15,7 +15,7 @@ export default class ListContainer extends Component {
         console.log(this.props.list)
         let { listData: {currentPage = 1, rows = 10} } = this.props.list
         this.props.fetchList({ currentPage, rows })
-        console.log(1112)
+        console.log(11156)
     }
 
     render () {
