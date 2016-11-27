@@ -1,21 +1,23 @@
 /**
  * Created by WJ on 2016/11/20.
  */
+import listService from 'SERVICE/listService'
+const fetchList = ({currentPage, rows}) => {
 
-const fetchList = ({ currentPage, rows }) => {
-    console.log(currentPage, rows, 6)
-    return {
-        type: 'listTest',
-        payload: {
-
-        }
+    return function (dispatch) {
+        listService.fetch({page: currentPage, rows}).then(function (res) {
+            dispatch({
+                type: 'fetchList',
+                payload: res
+            })
+        })
     }
+
+
 }
 
 export default {
     fetchList
 }
 
-export const ACTION_HANDLERS = {
 
-}
