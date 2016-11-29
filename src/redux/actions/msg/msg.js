@@ -1,4 +1,4 @@
- import msgService from 'SERVICE/msgService'
+import msgService from 'SERVICE/msgService'
 // ================================
 // Action Type
 // ================================
@@ -11,57 +11,57 @@ const DEL_MSG = 'DEL_MSG'
 // Action Creator
 // 下面是一个高阶函数
 /* var fetchMsg = function fetchMsg(queryBody) {
-  return function (dispatch) {
-    return msgService.fetch(queryBody).then(function (msgs) {
-      return dispatch({
-        type: FETCH_MSG,
-        payload: msgs
-      });
-    });
-  };
-}; */
+ return function (dispatch) {
+ return msgService.fetch(queryBody).then(function (msgs) {
+ return dispatch({
+ type: FETCH_MSG,
+ payload: msgs
+ });
+ });
+ };
+ }; */
 // ================================
 const fetchMsg = queryBody => dispatch =>
-  msgService
-    .fetch(queryBody)
-    .then(msgs => dispatch({
-      type: FETCH_MSG,
-      payload: msgs
-    }))
+    msgService
+        .fetch(queryBody)
+        .then(msgs => dispatch({
+            type: FETCH_MSG,
+            payload: msgs
+        }))
 
 const addMsg = msgBody => dispatch =>
-  msgService
-    .add(msgBody)
-    .then(msg => {
-      dispatch({
-        type: ADD_MSG,
-        payload: msg
-      })
-      return msg
-    })
+    msgService
+        .add(msgBody)
+        .then(msg => {
+            dispatch({
+                type: ADD_MSG,
+                payload: msg
+            })
+            return msg
+        })
 
 const modMsg = msgBody => dispatch =>
-  msgService
-    .mod(msgBody)
-    .then(msg => {
-      dispatch({
-        type: MOD_MSG,
-        payload: msg
-      })
-      return msg // 便于链式调用
-    })
+    msgService
+        .mod(msgBody)
+        .then(msg => {
+            dispatch({
+                type: MOD_MSG,
+                payload: msg
+            })
+            return msg // 便于链式调用
+        })
 
 const delMsg = msgId => dispatch =>
-  msgService
-    .del(msgId)
-    .then(() => dispatch({
-      type: DEL_MSG,
-      payload: msgId
-    }))
+    msgService
+        .del(msgId)
+        .then(() => dispatch({
+            type: DEL_MSG,
+            payload: msgId
+        }))
 
 /* default 导出所有 Action Creators */
 export default {
-  fetchMsg, addMsg, modMsg, delMsg
+    fetchMsg, addMsg, modMsg, delMsg
 }
 
 // ================================
@@ -72,12 +72,16 @@ export default {
 // 故在此直接给出处理逻辑
 // ================================
 export const ACTION_HANDLERS = {
-  [FETCH_MSG]: (msgs, { payload }) => payload,
-  [ADD_MSG]: (msgs, { payload }) => [ ...msgs, payload ],
-  [MOD_MSG]: (msgs, { payload }) => msgs.map(
-    msg => msg.id === payload.id ? payload : msg
-  ),
-  [DEL_MSG]: (msgs, { payload }) => msgs.filter(
-    msg => msg.id !== payload // payload is msgId
-  )
+    [FETCH_MSG]: (msgs, {payload}) => payload,
+    [ADD_MSG]: (msgs, {payload}) => [...msgs, payload],
+    [MOD_MSG]: (msgs, {payload}) => msgs.map(
+        msg => msg.id === payload.id ? payload : msg
+    ),
+    [DEL_MSG]: (msgs, {payload}) => msgs.filter(
+        msg => msg.id !== payload // payload is msgId
+    ),
+    scrolling: (state, {payload}) => {
+        console.log(payload, 565)
+        return state
+    }
 }
