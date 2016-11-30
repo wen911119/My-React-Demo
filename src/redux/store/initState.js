@@ -16,23 +16,11 @@ export default {
     },
 
     list: {
-        pages: [
-            {
-                items: [
-                    {
-                        name: '商品名称',
-                        imgUrl: '123.png',
-                        brand: '美邦',
-                        price: '$999'
-                    }
-
-                ],
-                isShow: true,
-                height: '500px'
-            }
-        ],
+        pages: [],
         currentPage: 1,
-        rows: 100
+        rows: 10,
+        pageNum: 1,
+        isLoading: false
     },
 
     /* 待办事项模块（按需加载） */

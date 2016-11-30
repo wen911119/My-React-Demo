@@ -79,9 +79,5 @@ export const ACTION_HANDLERS = {
     ),
     [DEL_MSG]: (msgs, {payload}) => msgs.filter(
         msg => msg.id !== payload // payload is msgId
-    ),
-    scrolling: (state, {payload}) => {
-        console.log(payload, 565)
-        return state
-    }
+    )
 }

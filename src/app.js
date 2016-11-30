@@ -91,6 +91,7 @@ window.onscroll = function (e) {
 
 }
 
+window._app_client_height_ = document.documentElement.clientHeight
 ReactDOM.render(
     <Provider store={store}>
         <Router history={history} children={routes}/>

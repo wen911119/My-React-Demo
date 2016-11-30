@@ -12,7 +12,7 @@ export default class ListContainer extends Component {
     }
 
     updateList () {
-        console.log(this.props.rows)
+
         let { listData: {currentPage = 1, rows = 10} } = this.props.list
         this.props.fetchList({ currentPage, rows })
     }
@@ -24,6 +24,7 @@ export default class ListContainer extends Component {
                 { pages.map((page)=>
                     <ListPage page={page} />
                 )}
+                <div id='bottomLoading'>正在加载中...</div>
             </div>
         )
     }
