@@ -11,7 +11,7 @@ export default class ListPage extends Component {
             return (
                 <div className={'listPage_' + pageIndex} data-index={pageIndex}>
                     { pageContent.map((item) =>
-                        <ListItem data={item}/>
+                        <ListItem data={item} key={item.productCode}/>
                     )}
                 </div>
 

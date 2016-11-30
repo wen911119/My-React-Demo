@@ -17,8 +17,8 @@ import routes from 'ROUTE'  // 会默认加载routers目录下index.js
 if (__DEV__ && __WHY_DID_YOU_UPDATE__) {  // __DEV__和__WHY_DID_YOU_UPDATE__都是在webpack.base.conf.js定义的全局变量
 
     // 解构赋值
-    const {whyDidYouUpdate} = require('why-did-you-update')
-    whyDidYouUpdate(React)
+    // const {whyDidYouUpdate} = require('why-did-you-update')
+    // whyDidYouUpdate(React)
 
 }
 if (__DEV__) {

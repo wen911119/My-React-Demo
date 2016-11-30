@@ -30,18 +30,16 @@ const ACTION_HANDLERS = {
     },
     scrolling: (state, {payload}) => {
         let bottomLoadingPosition = document.getElementById('bottomLoading').getBoundingClientRect().top
-        console.log(payload.scrollTop, bottomLoadingPosition)
         if (bottomLoadingPosition < window._app_client_height_ + 20 && !state.isLoading) {
             let newState = Object.assign({}, state)
             newState.isLoading = true
+            console.log(newState, 999999999)
             return newState
         } else {
             return state
         }
-
     }
+
 }
-
-
 export default createReducer(initState.list, ACTION_HANDLERS)
 

@@ -17,10 +17,10 @@ export default {
 
     list: {
         pages: [],
-        currentPage: 1,
+        currentPage: 0,
         rows: 10,
         pageNum: 1,
-        isLoading: false
+        isLoading: true
     },
 
     /* 待办事项模块（按需加载） */

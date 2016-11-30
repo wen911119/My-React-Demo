@@ -2,7 +2,7 @@ import {injectReducer} from 'REDUCER'
 import createContainer from 'UTIL/createContainer'
 
 const connectComponent = createContainer(
-    ({list}) => ({list, rows: 15}), // mapStateToProps
+    ({list}) => ({list}), // mapStateToProps
     require('ACTION/list').default                // mapActionCreators
 )
 
