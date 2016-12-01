@@ -13,11 +13,9 @@ export default class ListContainer extends Component {
     }
 
     updateList() {
-        console.log(123456789)
         let {listData: {currentPage = 1, rows = 10, isLoading}} = this.props.list
         if (isLoading) {
-            console.log({currentPage: currentPage + 1, rows})
-            this.props.fetchList({currentPage: currentPage + 1, rows})
+            this.props.fetchList({currentPage: parseInt(currentPage, 10) + 1, rows})
         }
     }
 
@@ -28,13 +26,15 @@ export default class ListContainer extends Component {
     }
 
     render() {
-        let {listData: {pages = [], isLoading}} = this.props.list
+        let {listData: {pages = [], isLoading, currentPage, pageNum}} = this.props.list
+        let tips = currentPage < pageNum ? '正在加载中...' : '已经到底喽~'
         return (
             <div data-state={isLoading}>
+                <div id="listTopTag"></div>
                 { pages.map((page) =>
                     <ListPage page={page} key={page.pageIndex}/>
                 )}
-                <div id='bottomLoading'>正在加载中...</div>
+                <div id='bottomLoading'>{tips}</div>
             </div>
         )
     }

@@ -8,7 +8,7 @@ export default class ListItem extends Component {
         let {productName, imgUrl_300_300: mgUrl, brandName, salesPrice} = this.props.data
 
         return (
-            <div className="flex-box listItem">
+            <div className="flex-box listItem" style={{height: '360px'}}>
                 <div className="goods_pic">
                     <img src={mgUrl} alt=""/>
                 </div>
