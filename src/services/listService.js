@@ -14,10 +14,10 @@ class ListService {
      * @param  {Number} options.msgId
      * @return {Promise}
      */
-    fetch({page, rows}) {
+    fetch({page, rows, word = '大衣'}) {
         let url = '/list/'
 
-        url = `${url}?page=${page}&rows=${rows}`
+        url = `${url}?page=${page}&rows=${rows}&word=${word}`
 
         return xhr({url})
     }
