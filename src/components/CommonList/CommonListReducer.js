@@ -24,8 +24,34 @@ const initState = {
 
 const ACTION_HANDLERS = {
     fetchListData: (listState, {payload}) => {
+        return listState.dataFormatter(listState, payload)
+    },
+    scrolling: (listState, {payload}) => {
+        let newState = Object.assign({}, listState)
+        let bottomLoadingPosition = document.getElementById('bottomLoading').getBoundingClientRect().top
+        let listTopPosition = document.getElementById('listTopTag').getBoundingClientRect().bottom
+        if (listTopPosition > window._app_client_height_) {
+            console.log('列表还没有进入可视区')
+        } else if (listTopPosition > 0) {
+            console.log('列表正进入或离开可视区，当前是page_1')
+        } else {
+            let pageViewNum = parseInt(-listTopPosition / 7200, 10) + 1
+            console.log('当前是第' + pageViewNum + '页')
 
+            newState.pages.forEach((v, k) => {
+                if (v.pageNum <= (pageViewNum - 3) || v.pageNum >= (pageViewNum + 3)) {
+                    v.isShow = false
+                } else {
+                    v.isShow = true
+                }
+            })
+
+        }
+        if (bottomLoadingPosition < window._app_client_height_ + 20 && !listState.needLoading && listState.page < listState.pageNum) {
+            newState.needLoading = true
+        }
+        return newState
     }
 }
 
-export default createReducer(initState.list, ACTION_HANDLERS)
+export default createReducer(initState, ACTION_HANDLERS)

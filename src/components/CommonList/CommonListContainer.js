@@ -21,4 +21,41 @@ export default class CommonListContainer extends Component {
             this.props.fetchListData({currentPage: parseInt(currentPage, 10) + 1, rows})
         }
     }
+
+    render() {
+        let {listData: {pages = [], needLoading, page, pageNum}, pageItem} = this.props
+        let tips = page < pageNum ? '正在加载中...' : '已经到底喽~'
+        return (
+            <div data-state={needLoading}>
+                <div id="listTopTag"></div>
+                { pages.map((page) =>
+                    <ListPage page={page} key={page.pageNum} PageItem={pageItem}/>
+                )}
+                <div id='bottomLoading'>{tips}</div>
+            </div>
+        )
+    }
+}
+
+class ListPage extends Component {
+    render() {
+        let {page:{isShow, height, pageContent, pageNum}, PageItem} = this.props
+        if (isShow) {
+            return (
+                <div className={'listPage_' + pageNum}>
+                    { pageContent.map((item, index) =>
+                        <PageItem data={item} key={pageNum + '-' + index}/>
+                    )}
+                </div>
+
+
+            )
+        } else {
+            return (
+                <div style={{height: height}} className={'listPage_' + pageNum}>
+
+                </div>
+            )
+        }
+    }
 }

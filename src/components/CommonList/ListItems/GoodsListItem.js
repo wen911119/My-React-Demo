@@ -22,3 +22,7 @@ export default class GoodsListItem extends Component {
 
     }
 }
+
+export function dataFormatter(state, originalData) {
+    return state
+}
