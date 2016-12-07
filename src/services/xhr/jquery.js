@@ -1,21 +1,18 @@
-import { rootPath, errHandler } from './config'
+import {rootPath, errHandler} from './config'
 
-const xhr = ({ url, body = null, method = 'get' }) => {
-  const defer = $.Deferred()
+const xhr = ({url, body = null, method = 'get', dataType = 'json'}) => {
+    const defer = $.Deferred()
 
-  $.ajax({
-    type: method,
-    url: rootPath + url,
-    data: body
-    // xhrFields: { // 跨域允许带上 cookie
-    //   withCredentials: [域名]
-    // },
-    // crossDomain: true
-  })
-  .done(defer.resolve)
-  .fail(errHandler)
+    $.ajax({
+        type: method,
+        url: rootPath + url,
+        data: body,
+        dataType: dataType
+    })
+        .done(defer.resolve)
+        .fail(errHandler)
 
-  return defer.promise()
+    return defer.promise()
 }
 
 export default xhr

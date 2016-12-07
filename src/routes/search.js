@@ -3,19 +3,17 @@
  */
 import {injectReducer} from 'REDUCER'
 import createContainer from 'UTIL/createContainer'
+import searchView, {searchReducer} from 'VIEW/search'
+import GoodsListItem, {goodsListDataFormatter, dataUrl} from 'COMPONENT/CommonList/ListItems/GoodsListItem.js'
 
-const connectComponent = createContainer(
-    ({list}) => ({list, rows: 15}), // mapStateToProps
-    require('ACTION/list').default                // mapActionCreators
-)
 
 export default {
     path: 'search',
 
     getComponent (nextState, cb) {
-        require.ensure([], (require) => {
-            injectReducer('search', require('REDUCER/search').default)
-            cb(null, require('VIEW/search').default)
+        require.ensure([], () => {
+            injectReducer('searchView', searchReducer)
+            cb(null, searchView)
         }, 'searchView')
 
     },
@@ -23,8 +21,13 @@ export default {
     indexRoute: {
         getComponent (nextState, cb) {
             require.ensure([], (require) => {
-                cb(null, connectComponent(require('COMPONENT/List').default))
-            }, 'list')
+                cb(null, createContainer(({searchView: {goodsList:list}}) => ({
+                    list,
+                    listItem: GoodsListItem,
+                    dataFormatter: goodsListDataFormatter,
+                    url: dataUrl
+                }), require('COMPONENT/CommonList/CommonListAction.js').default, require('COMPONENT/CommonList/CommonListContainer.js').default))
+            }, 'goodsList')
         }
     },
 

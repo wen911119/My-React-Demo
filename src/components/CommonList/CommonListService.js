@@ -4,8 +4,9 @@
 import xhr from './xhr/'
 
 class CommonListService {
-    fetch({url, page = 1, rows = 10, type = 'json'}) {
-        return xhr(url, page, rows, type)
+    fetch({url, body = {}, dataType = 'json'}) {
+
+        return xhr(url, body, dataType)
     }
 }
 

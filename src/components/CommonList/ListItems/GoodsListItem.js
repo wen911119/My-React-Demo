@@ -23,6 +23,19 @@ export default class GoodsListItem extends Component {
     }
 }
 
-export function dataFormatter(state, originalData) {
-    return state
+export function goodsListDataFormatter(originalData) {
+    if (originalData.code == 1) {
+        return {
+            pageContent: originalData.data.list,
+            pageNum: originalData.data.fpage.currentPage,
+            height: originalData.data.fpage.rows * 18 * 20,
+            totalPageNum: originalData.data.fpage.pageNum,
+            page: originalData.data.fpage.page,
+            rows: originalData.data.fpage.rows
+        }
+    } else {
+        return {}
+    }
 }
+
+export const dataUrl = '/list/'
