@@ -18,7 +18,8 @@ const initState = {
     rows: 10,   // 每页几条数据!!!!
     totalPageNum: 0, // 总页数!!!!
     currentPageView: 0, // 当前可视区内是第几页
-    needLoading: true // 是否需要加载数据
+    needLoading: true, // 是否需要加载数据
+    extraQueryParameter:{} // 额外的查询参数
 }
 
 const ACTION_HANDLERS = {
