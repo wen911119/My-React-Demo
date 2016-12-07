@@ -7,6 +7,8 @@ export default class CommonListContainer extends Component {
     componentWillMount() {
         // 这个方法并不是每次更新都会执行的，因为有缓存
         // needLoading 的改变并不会触发这里
+        const extraQueryParameter = this.props.queryParameter
+        extraQueryParameter && this.props.initList(extraQueryParameter)
         this.loading()
     }
 
@@ -16,15 +18,18 @@ export default class CommonListContainer extends Component {
     }
 
     loading() {
-        let {list: {page = 1, rows = 10, needLoading}, dataFormatter, url } = this.props
+        let {list: {page = 5, rows = 10, needLoading, extraQueryParameter = {}}, dataFormatter, url} = this.props
         if (needLoading) {
-            this.props.fetchListData({url, page: parseInt(page, 10) + 1, rows, dataFormatter})
+            extraQueryParameter.page = parseInt(page, 10) + 1
+            extraQueryParameter.rows = rows
+            this.props.fetchListData({url, body: extraQueryParameter, dataFormatter})
         }
     }
 
     render() {
-        let {list: {pages = [], needLoading, page, pageNum}, listItem} = this.props
-        let tips = page < pageNum ? '正在加载中...' : '已经到底喽~'
+        let {list: {pages = [], needLoading, page, totalPageNum}, listItem} = this.props
+        let tips = page < totalPageNum ? '正在加载中...' : '已经到底喽~'
+        console.log(pages, 45685656)
         return (
             <div data-state={needLoading}>
                 <div id="listTopTag"></div>
@@ -39,7 +44,7 @@ export default class CommonListContainer extends Component {
 
 class ListPage extends Component {
     render() {
-        let {page:{isShow, height, pageContent, pageNum}, listItem:ListItem} = this.props
+        let {page: {isShow, height, pageContent, pageNum}, listItem: ListItem} = this.props
         if (isShow) {
             return (
                 <div className={'listPage_' + pageNum}>

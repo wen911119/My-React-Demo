@@ -6,7 +6,7 @@
  */
 import React from 'react'
 import {combineReducers} from 'redux'
-import commonListReducer from './list'
+import commonListReducer from 'COMPONENT/CommonList/CommonListReducer.js'
 
 /* 留言板 布局基页 */
 const SearchView = ({children, location}) => (

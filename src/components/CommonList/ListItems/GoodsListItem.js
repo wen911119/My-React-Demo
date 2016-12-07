@@ -28,10 +28,10 @@ export function goodsListDataFormatter(originalData) {
         return {
             pageContent: originalData.data.list,
             pageNum: originalData.data.fpage.currentPage,
-            height: originalData.data.fpage.rows * 18 * 20,
-            totalPageNum: originalData.data.fpage.pageNum,
-            page: originalData.data.fpage.page,
-            rows: originalData.data.fpage.rows
+            height: originalData.data.fpage.pagesize * 18 * 20,
+            totalPageNum: originalData.data.fpage.total,
+            page: originalData.data.fpage.currentPage,
+            rows: originalData.data.fpage.pagesize
         }
     } else {
         return {}
@@ -39,3 +39,4 @@ export function goodsListDataFormatter(originalData) {
 }
 
 export const dataUrl = '/list/'
+
