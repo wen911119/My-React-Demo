@@ -30,7 +30,7 @@ export function goodsListDataFormatter(originalData) {
             pageNum: originalData.data.fpage.currentPage,
             height: originalData.data.fpage.pagesize * 18 * 20,
             totalPageNum: originalData.data.fpage.total,
-            page: originalData.data.fpage.currentPage,
+            currentPage: originalData.data.fpage.currentPage,
             rows: originalData.data.fpage.pagesize
         }
     } else {

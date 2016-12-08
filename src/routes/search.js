@@ -6,6 +6,13 @@ import createContainer from 'UTIL/createContainer'
 import searchView, {searchReducer} from 'VIEW/search'
 import GoodsListItem, {goodsListDataFormatter, dataUrl} from 'COMPONENT/CommonList/ListItems/GoodsListItem.js'
 
+const goodsListConfig = {
+    listItem: GoodsListItem,
+    dataFormatter: goodsListDataFormatter,
+    dataFromUrl: dataUrl,
+    queryParameter: {word: '男鞋', page: 1, rows: 20},
+    dataType: 'json'
+}
 
 export default {
     path: 'search',
@@ -21,13 +28,7 @@ export default {
     indexRoute: {
         getComponent (nextState, cb) {
             require.ensure([], (require) => {
-                cb(null, createContainer(({searchView: {goodsList: list}}) => ({
-                    list,
-                    listItem: GoodsListItem,
-                    dataFormatter: goodsListDataFormatter,
-                    url: dataUrl,
-                    queryParameter: {word: '男鞋'}
-                }), require('COMPONENT/CommonList/CommonListActions.js').default, require('COMPONENT/CommonList/CommonListContainer.js').default))
+                cb(null, createContainer(({searchView: {goodsList: list}}) => ({...goodsListConfig, list}), require('COMPONENT/CommonList/CommonListActions.js').default, require('COMPONENT/CommonList/CommonListContainer.js').default))
             }, 'goodsList')
         }
     },

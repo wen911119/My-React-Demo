@@ -31,7 +31,9 @@ if (__PROD__) {
 // ================================
 // 将根组件挂载到 DOM，启动！
 // ================================
-
+window.onerror = function (msg) {
+    alert(msg)
+}
 
 function throttle(func, wait, options) {
     let context, args, result, timeout
@@ -70,6 +72,8 @@ function throttle(func, wait, options) {
         return result
     }
 }
+
+alert(Object.assign({a: 1}, {b: 2}).a)
 
 
 const MOUNT_NODE = document.getElementById('app')

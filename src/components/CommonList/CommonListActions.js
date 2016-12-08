@@ -14,12 +14,12 @@ const fetchListData = ({url, body, dataFormatter, dataType}) => {
     }
 }
 
-const initList = (extraQueryParameter) => ({
-    type: 'addExtraQueryParameter',
-    payload: extraQueryParameter
+const init = (config) => ({
+    type: 'init',
+    payload: config
 })
 
 export default {
     fetchListData,
-    initList
+    init
 }
