@@ -59,7 +59,6 @@ const ACTION_HANDLERS = {
     },
 
     scrolling: (listState, {payload}) => {
-        let change = false
         let newState = Object.assign({}, listState)
         let bottomLoadingTag = document.getElementById('bottomLoading')
         let bottomLoadingPosition = bottomLoadingTag ? bottomLoadingTag.getBoundingClientRect().top : 0
@@ -81,20 +80,12 @@ const ACTION_HANDLERS = {
                     v.isShow = true
                 }
             })
-            change = true
         }
-        if (bottomLoadingPosition < window._app_client_height_ + 20 && !listState.needLoading && listState.currentPage < listState.totalPageNum) {
+        if (bottomLoadingPosition < window._app_client_height_ + 40 && !listState.needLoading && listState.currentPage < listState.totalPageNum) {
             newState.queryParameter.page++
             newState.needLoading = true
-            change = true
         }
-        if (change) {
-            return newState
-        } else {
-            console.log('old no  new')
-            return listState
-        }
-
+        return newState
     }
 }
 
