@@ -7,7 +7,6 @@ export default class CommonListContainer extends Component {
     componentWillMount() {
         // 获取配置项
         let {queryParameter, dataFromUrl, listItem, dataFormatter, dataType} = this.props
-        console.log(queryParameter, dataFromUrl, listItem, dataFormatter, dataType)
         // 初始化
         this.props.init({queryParameter, dataFromUrl, listItem, dataFormatter, dataType})
     }
@@ -17,7 +16,6 @@ export default class CommonListContainer extends Component {
         // 所以只能在这里检测needLoading的改变
         let {needLoading, queryParameter, dataFromUrl, dataFormatter, dataType} = this.props.list
         if (needLoading) {
-            console.log(needLoading)
             this.props.fetchListData({url: dataFromUrl, body: queryParameter, dataFormatter: dataFormatter, dataType: dataType})
         }
     }
@@ -25,7 +23,6 @@ export default class CommonListContainer extends Component {
 
     render() {
         let {pages = [], currentPage, totalPageNum, listItem} = this.props.list
-        console.log(pages, 888888888)
         let tips = currentPage < totalPageNum ? '正在加载中...' : '已经到底喽~'
         return (
             <div>

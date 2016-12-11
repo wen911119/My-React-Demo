@@ -76,6 +76,11 @@ export default class Navbar extends Component {
                                         列表页(我自己的)
                                     </Link>
                                 </li>
+                                <li className={pathname.startsWith('/search') && 'active'}>
+                                    <Link to='/search'>
+                                        搜索页(我自己的)
+                                    </Link>
+                                </li>
                             </ul>
                             { userData ?
                                 <LogoutDropdown userData={userData} logout={logout}/> :
