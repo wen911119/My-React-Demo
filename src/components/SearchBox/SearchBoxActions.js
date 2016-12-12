@@ -2,14 +2,15 @@
  * Created by WJ on 2016/12/12.
  */
 import SearchBoxService from './SearchBoxService'
-const keyWordChange = ({url, keyWord, dataType}) => {
-
+const keywordChange = (url, keyword, dataType) => {
+    console.log(url)
     return function (dispatch) {
         dispatch({
-            type: 'keyWordChange',
-            payload: keyWord
+            type: 'keywordChange',
+            payload: keyword
         })
-        SearchBoxService.fetch({url, keyWord, dataType}).then(function (res) {
+        SearchBoxService.fetch({url, keyword, dataType}).then(function (res) {
+
             res = res.code == 1 ? res.data : {}
             dispatch({
                 type: 'fetchSuggesTions',
@@ -25,6 +26,6 @@ const init = (config) => ({
 })
 
 export default {
-    keyWordChange,
+    keywordChange,
     init
 }
