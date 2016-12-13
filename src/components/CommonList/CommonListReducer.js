@@ -32,6 +32,9 @@ const ACTION_HANDLERS = {
     fetchListData: (listState, {payload}) => {
         if (payload) {
             let newState = Object.assign({}, listState)
+            if (payload.pageNum == 1) {
+                newState.pages = []
+            }
             newState.pages.push({
                 pageContent: payload.pageContent,
                 pageNum: payload.pageNum,

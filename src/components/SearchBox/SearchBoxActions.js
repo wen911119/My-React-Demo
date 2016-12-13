@@ -3,7 +3,6 @@
  */
 import SearchBoxService from './SearchBoxService'
 const keywordChange = (url, keyword, dataType) => {
-    console.log(url)
     return function (dispatch) {
         dispatch({
             type: 'keywordChange',
@@ -21,7 +20,7 @@ const keywordChange = (url, keyword, dataType) => {
 }
 
 const init = (config) => ({
-    type: 'init',
+    type: 'searchBoxInit',
     payload: config
 })
 

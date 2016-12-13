@@ -15,7 +15,7 @@ const initState = {
 }
 
 const ACTION_HANDLERS = {
-    init: (searchBoxState, {payload}) => {
+    searchBoxInit: (searchBoxState, {payload}) => {
         let newState = Object.assign({}, searchBoxState)
         newState.placeholderWord = payload.placeholderWord
         newState.hotwords = payload.hotwords

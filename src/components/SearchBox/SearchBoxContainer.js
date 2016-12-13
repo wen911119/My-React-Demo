@@ -4,9 +4,15 @@
 import React, {Component} from 'react'
 
 export default class SearchBoxContainer extends Component {
+
+    static contextTypes = {
+        router: React.PropTypes.object.isRequired
+    }
+
     componentWillMount() {
         // 获取配置项
         let {placeholderWord, hotwords, suggestionsFromUrl, keywordToUrl} = this.props
+        console.log(placeholderWord, hotwords, suggestionsFromUrl, keywordToUrl)
         // 初始化 把这些属性更新到state里
         this.props.init({placeholderWord, hotwords, suggestionsFromUrl, keywordToUrl})
     }
@@ -20,7 +26,6 @@ export default class SearchBoxContainer extends Component {
     handleChange(evt) {
         let self = this
         let {keywordChange, search: {suggestionsFromUrl}} = self.props
-        console.log(suggestionsFromUrl, evt.target.value)
         keywordChange(suggestionsFromUrl + '?keyWord=' + evt.target.value, evt.target.value)
     }
 
@@ -31,7 +36,8 @@ export default class SearchBoxContainer extends Component {
     }
 
     render() {
-        let {placeholderWord, hotwords, suggestions, historyWords} = this.props.search
+        console.log(this.props.search)
+        let {placeholderWord, hotwords, suggestions, historyWords, keyword} = this.props.search
 
         return (
             <div>
@@ -42,7 +48,7 @@ export default class SearchBoxContainer extends Component {
                         <div className="search-input flex-item-1">
                             <form onSubmit={(e) => this.handleSubmit(e)}>
                                 <input type="search" placeholder={placeholderWord}
-                                       defaultValue="" onChange={this.handleChange.bind(this)}/>
+                                       defaultValue={keyword} onChange={this.handleChange.bind(this)}/>
                             </form>
                         </div>
                         <div className="clear-icon"></div>
@@ -64,7 +70,7 @@ class SearchTips extends Component {
                 <div className="suggestion-words-area">
                     <ul>
                         { suggestions.map((suggestion, index) =>
-                            <li key={index}>{suggestion.word} <span>{suggestion.count}</span></li>
+                            <li key={index}>{suggestion.word} <span>{suggestion.count}件商品</span></li>
                         )}
                     </ul>
                 </div>

@@ -7,6 +7,7 @@ export default class CommonListContainer extends Component {
     componentWillMount() {
         // 获取配置项
         let {queryParameter, dataFromUrl, listItem, dataFormatter, dataType} = this.props
+        queryParameter.word = this.props.params.keyword || ''
         // 初始化
         this.props.init({queryParameter, dataFromUrl, listItem, dataFormatter, dataType})
     }
