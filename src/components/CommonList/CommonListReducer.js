@@ -35,6 +35,9 @@ const ACTION_HANDLERS = {
             if (payload.pageNum == 1) {
                 newState.pages = []
             }
+            if (payload.pageNum == 0) {
+                return initState
+            }
             newState.pages.push({
                 pageContent: payload.pageContent,
                 pageNum: payload.pageNum,

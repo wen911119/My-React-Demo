@@ -25,13 +25,24 @@ export default class GoodsListItem extends Component {
 
 export function goodsListDataFormatter(originalData) {
     if (originalData.code == 1) {
-        return {
-            pageContent: originalData.data.list,
-            pageNum: originalData.data.fpage.currentPage,
-            height: originalData.data.fpage.pagesize * 18 * 20,
-            totalPageNum: originalData.data.fpage.total,
-            currentPage: originalData.data.fpage.currentPage,
-            rows: originalData.data.fpage.pagesize
+        if (originalData.data.length == 0) {
+            return {
+                pageContent: [],
+                pageNum: 0,
+                height: 0,
+                totalPageNum: 1,
+                currentPage: 1,
+                rows: 0
+            }
+        } else {
+            return {
+                pageContent: originalData.data.list,
+                pageNum: originalData.data.fpage.currentPage,
+                height: originalData.data.fpage.pagesize * 18 * 20,
+                totalPageNum: originalData.data.fpage.total,
+                currentPage: originalData.data.fpage.currentPage,
+                rows: originalData.data.fpage.pagesize
+            }
         }
     } else {
         return {}

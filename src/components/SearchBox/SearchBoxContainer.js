@@ -36,7 +36,6 @@ export default class SearchBoxContainer extends Component {
     }
 
     render() {
-        console.log(this.props.search)
         let {placeholderWord, hotwords, suggestions, historyWords, keyword} = this.props.search
 
         return (
@@ -46,7 +45,7 @@ export default class SearchBoxContainer extends Component {
                     <div className="search-input-box flex-box flex-item-1">
                         <div className="search-icon"></div>
                         <div className="search-input flex-item-1">
-                            <form onSubmit={(e) => this.handleSubmit(e)}>
+                            <form onSubmit={(e) => this.handleSubmit(e)} action="/list">
                                 <input type="search" placeholder={placeholderWord}
                                        defaultValue={keyword} onChange={this.handleChange.bind(this)}/>
                             </form>

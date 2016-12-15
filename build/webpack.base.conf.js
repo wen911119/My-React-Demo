@@ -25,7 +25,7 @@ module.exports = {
         // 框架 / 类库 分离打包
         // ================================
         vendor: [            //生成vendor.js
-            'babel-polyfill',
+            /* 'babel-polyfill', */
             'history',
             'lodash',
             'react',
