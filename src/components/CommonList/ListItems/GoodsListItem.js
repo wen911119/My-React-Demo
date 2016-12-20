@@ -2,15 +2,16 @@
  * Created by MB-WJ on 2016/12/2.
  */
 import React, {Component} from 'react'
-
+import {Link} from 'react-router'
 export default class GoodsListItem extends Component {
     render() {
-        let {productName, imgUrl_300_300: mgUrl, brandName, salesPrice} = this.props.data
+        let {productName, imgUrl_300_300: mgUrl, brandName, salesPrice, productCode} = this.props.data
 
         return (
+
             <div className="flex-box listItem" style={{height: '360px'}}>
                 <div className="goods_pic">
-                    <img src={mgUrl} alt=""/>
+                    <Link to={'/goodsDetail/' + productCode}><img src={mgUrl} alt=""/></Link>
                 </div>
                 <div className="goods_text flex-item-1">
                     <div className="goods_brand">{brandName}</div>
@@ -18,6 +19,7 @@ export default class GoodsListItem extends Component {
                     <div className="goods_price">{salesPrice}</div>
                 </div>
             </div>
+
         )
 
     }
